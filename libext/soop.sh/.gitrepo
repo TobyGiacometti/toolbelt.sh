@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/TobyGiacometti/soop.sh
+	branch = 1.0.0
+	commit = 24ca9d39b48a156713ac4d9815679abed0668597
+	parent = f78bab7548b8448abfc14e83aae0a1dcdaa5dbcb
+	method = merge
+	cmdver = 0.4.3
