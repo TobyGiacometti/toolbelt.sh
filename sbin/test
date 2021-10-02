@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+set -o errtrace
+set -o pipefail
+
+#---
+# @stdout Help
+print_help() {
+	cat <<-EOF
+		Run tests.
+
+		Usage:
+		  $script_name
+		  $script_name -h
+
+		Options:
+		  -h  Print help.
+	EOF
+}
+
+script_name=$(basename "$0")
+project_dir=$(cd "$(dirname "$0")/.." &>/dev/null && pwd) || exit
+export PATH=/usr/local/bash-3.2.57/bin:$PATH
+
+while getopts :h option; do
+	case $option in
+		h)
+			print_help
+			exit
+			;;
+		\?)
+			echo "Option is unknown: -$OPTARG" >&2
+			exit 1
+			;;
+	esac
+done
+
+cd "$project_dir" || exit
+
+prove --shuffle --ext sh --failures --comments --parse
